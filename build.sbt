@@ -1,17 +1,17 @@
 import org.jetbrains.sbtidea.Keys._
 
-lazy val myAwesomeFramework =
+lazy val sbt_idea_stateful_comp =
   project.in(file("."))
     .enablePlugins(SbtIdeaPlugin)
     .settings(
-      version := "0.0.1-SNAPSHOT",
-      scalaVersion := "2.13.2",
-      ThisBuild / intellijPluginName := "My Awesome Framework",
-      ThisBuild / intellijBuild      := "203.7148.15",
+      version := "0.8.2",
+      scalaVersion := "2.13.5",
+      ThisBuild / intellijPluginName := "Stateful Component",
+      ThisBuild / intellijBuild      := "203.7717.56",
       ThisBuild / intellijPlatform   := IntelliJPlatform.IdeaCommunity,
       Global    / intellijAttachSources := true,
       Compile / javacOptions ++= "--release" :: "11" :: Nil,
-      intellijPlugins += "com.intellij.properties".toPlugin,
+      intellijPlugins ++= Seq("com.intellij.properties".toPlugin, "org.intellij.scala:2020.3.23".toPlugin),
       libraryDependencies += "com.eclipsesource.minimal-json" % "minimal-json" % "0.9.5" withSources(),
       unmanagedResourceDirectories in Compile += baseDirectory.value / "resources",
       unmanagedResourceDirectories in Test    += baseDirectory.value / "testResources",
